@@ -141,11 +141,17 @@ lista_de_usuarios = [
   }
 ]
 
-TEMPLATE="| {:.<35} | {:.>6} | {:.>35} | {:.>6} | {:.>35} |"
+
+TEMPLATE="{:<35};{:>6};{:>35};{:>6};{:>35}"
 
 print(TEMPLATE.format("NOME","IDADE","EMAIL","SEXO"\
                 ,"ENDERECO"))
 
 for usuario in lista_de_usuarios:
-	print(TEMPLATE.format(usuario['nome'], \
+    if ( 'j' in usuario['email']  or 'l' in usuario['email'] or \
+         'J' in usuario['email']  or 'L' in usuario['email'] )\
+         and usuario['idade'] > 25:
+        
+	    print(TEMPLATE.format(usuario['nome'], \
 		    usuario['idade'],usuario['email'],usuario['sexo'],usuario['endereco']))
+
